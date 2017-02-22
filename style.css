@@ -4,13 +4,21 @@ body{
 }
 .home{
 	position: relative;
-	background-image: url('./images/bee-background.jpg');
-	background-size:cover;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	height: 500px;
-	overflow: hidden;
-    z-index: 3;
+    height: 500px;
+    z-index: 2;
+    overflow: hidden;
+}
+.home::before{
+    content: ' ';
+    position: fixed; 
+    width: 100%;
+    height: 500px;
+    top: 0;
+    left: 0;
+    background-image: url('./images/bee-background.jpg');
+    background-size:cover;
+    background-repeat: no-repeat;
+    will-change:transform;
 }
 .home__title,.home__subtitle:before,.home__subtitle{
     position: absolute;
@@ -23,6 +31,7 @@ body{
     font-size: 4rem;
     right:10%;
     top: 10%;
+    will-change:transform;
 }
 .home__subtitle:before {
     content: '<';
@@ -36,6 +45,7 @@ body{
     font-size: 1.5rem;
     left: 10%;
     top: 50%;
+    will-change:transform;
 }
 .home__bee{
 	background: url('./images/bee.png');
@@ -46,29 +56,39 @@ body{
 	height:546px;
     top: 50%;
     left: -150px;
+    will-change:transform;
 }
 .contain{
 	font-family: 'Dosis', sans-serif;
 	color: gray;
     position: relative;
     background-color: white;
-	margin-bottom: 200px;
+	margin-bottom: 75px;
     z-index: 2;
 }
 .about,.buzz-song,.draw,.comment{
   	width: 80%;
 	padding: 10% 0 0 0;
   	margin: 0 auto;
-    height: 400px;
+    height: 450px;
     overflow: hidden;
     position: relative;
+    box-sizing: border-box;
 }
 .about:after{
 	clear: both;
 	content: ' ';
 }
-.about__eng--hidden,.about__tw--hidden{
-	color:transparent;
+.about--hidden{
+    will-change:opacity;
+    opacity: 0;
+}
+.about__eng{
+    transition: 1.5s;
+}
+.about__tw{
+    transition: 1.5s;
+    transition-delay: .4s; 
 }
 .about__eng,.about__tw{
     text-align: justify;
@@ -76,19 +96,18 @@ body{
 	padding: 10px;
 	width: 45%;
     float:left;
-    transition: 1.5s;
 }
 .buzz-song__text {
-	transform: translateX(0px);
+    transform: translateX(0px);
     width: 11%;
     display: inline-block;
     background-color: rgb(255, 219, 117);
-    margin: 10px 0;
-    padding: 10px 5px;
+    margin: 7px 0;
+    padding: 7px 5px;
     border-radius: 5%;
     color: white;
-	opacity: 1;
-	transition: .5s;
+    opacity: 1;
+    transition: .5s;
 }
 .buzz-song__text--hidden {
 	opacity: 0;
